@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>套餐智能定制 - 杭州体检网</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config={theme:{extend:{colors:{teal:{50:'#f0fdfa',100:'#ccfbf1',200:'#99f6e4',300:'#5eead4',400:'#2dd4bf',500:'#14b8a6',600:'#0d9488',700:'#0f766e',800:'#115e59',900:'#134e4a'}}}}}
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+<nav class="bg-white/95 backdrop-blur-sm sticky top-0 z-50 border-b border-slate-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="flex items-center justify-between h-16">
+      <a href="index.html" class="flex items-center gap-2">
+        <div class="w-8 h-8 bg-teal-600 rounded-lg flex items-center justify-center">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+        </div>
+        <span class="text-lg font-bold text-teal-700">杭州体检网</span>
+      </a>
+      <div class="hidden md:flex items-center gap-1">
+        <a href="hospitals/public.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-teal-600 hover:bg-teal-50 transition-colors">🏥 机构</a>
+        <a href="packages.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-teal-600 hover:bg-teal-50 transition-colors">📋 套餐</a>
+        <a href="compare.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-teal-600 hover:bg-teal-50 transition-colors">⚖️ 对比</a>
+        <a href="custom.html" class="px-3 py-2 rounded-lg text-sm font-medium text-teal-600 bg-teal-50 transition-colors">🎯 定制</a>
+        <a href="tips.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-teal-600 hover:bg-teal-50 transition-colors">📖 注意</a>
+        <a href="compare.html" class="ml-3 inline-flex items-center px-5 py-2.5 bg-teal-600 hover:bg-teal-700 text-white text-sm font-medium rounded-lg transition-colors">开始对比</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <h1 class="text-2xl font-bold mb-2">🎯 套餐智能定制</h1>
+    <p class="text-purple-100 text-sm">回答几个简单问题，系统自动推荐最适合你的体检套餐</p>
+  </div>
+</section>
+
+<section class="max-w-3xl mx-auto px-4 sm:px-6 py-10">
+  <div class="bg-white rounded-2xl border border-slate-100 p-6 mb-6">
+    <!-- Step indicators -->
+    <div class="flex items-center justify-between mb-6">
+      <div class="flex items-center gap-2">
+        <div id="step1" class="w-8 h-8 rounded-full bg-teal-600 text-white flex items-center justify-center text-sm font-bold">1</div>
+        <div class="h-0.5 w-8 bg-slate-200" id="stepLine12"></div>
+        <div id="step2" class="w-8 h-8 rounded-full bg-slate-200 text-slate-400 flex items-center justify-center text-sm font-bold">2</div>
+        <div class="h-0.5 w-8 bg-slate-200" id="stepLine23"></div>
+        <div id="step3" class="w-8 h-8 rounded-full bg-slate-200 text-slate-400 flex items-center justify-center text-sm font-bold">3</div>
+      </div>
+      <span class="text-sm text-slate-500" id="stepLabel">第1步 / 共3步</span>
+    </div>
+
+    <!-- Step 1 -->
+    <div id="step-panel-1">
+      <h2 class="text-lg font-bold text-slate-800 mb-1">基本信息</h2>
+      <p class="text-sm text-slate-500 mb-5">告诉我们你的基本情况</p>
+      <div class="space-y-5">
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-2">您的年龄范围 <span class="text-red-500">*</span></label>
+          <select id="q-age" class="w-full border border-slate-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-teal-400">
+            <option value="">请选择年龄</option>
+            <option value="u25">25岁以下</option>
+            <option value="25-35">25-35岁</option>
+            <option value="35-45">35-45岁</option>
+            <option value="45-55">45-55岁</option>
+            <option value="55-65">55-65岁</option>
+            <option value="65+">65岁以上</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-2">性别 <span class="text-red-500">*</span></label>
+          <div class="flex gap-4">
+            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q-gender" value="male" class="accent-teal-600 w-4 h-4"> 男性</label>
+            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q-gender" value="female" class="accent-teal-600 w-4 h-4"> 女性</label>
+          </div>
+        </div>
+      </div>
+      <button onclick="nextStep(2)" class="mt-6 w-full bg-teal-600 hover:bg-teal-700 text-white py-3 rounded-xl font-medium transition-colors">下一步 →</button>
+    </div>
+
+    <!-- Step 2 -->
+    <div id="step-panel-2" class="hidden">
+      <h2 class="text-lg font-bold text-slate-800 mb-1">健康状况</h2>
+      <p class="text-sm text-slate-500 mb-5">了解你的健康风险</p>
+      <div class="space-y-5">
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-2">家族病史（可多选）</label>
+          <div class="grid grid-cols-2 gap-2">
+            <label class="flex items-center gap-2 cursor-pointer text-sm"><input type="checkbox" name="q-family" value="none" class="accent-teal-600 w-4 h-4"> 无明显家族病史</label>
+            <label class="flex items-center gap-2 cursor-pointer text-sm"><input type="checkbox" name="q-family" value="heart" class="accent-teal-600 w-4 h-4"> 心脑血管疾病</label>
+            <label class="flex items-center gap-2 cursor-pointer text-sm"><input type="checkbox" name="q-family" value="cancer" class="accent-teal-600 w-4 h-4"> 肿瘤/癌症</label>
+            <label class="flex items-center gap-2 cursor-pointer text-sm"><input type="checkbox" name="q-family" value="diabetes" class="accent-teal-600 w-4 h-4"> 糖尿病</label>
+            <label class="flex items-center gap-2 cursor-pointer text-sm"><input type="checkbox" name="q-family" value="hypertension" class="accent-teal-600 w-4 h-4"> 高血压</label>
+            <label class="flex items-center gap-2 cursor-pointer text-sm"><input type="checkbox" name="q-family" value="hyperlipidemia" class="accent-teal-600 w-4 h-4"> 高血脂</label>
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-2">近期不适症状（可多选）</label>
+          <div class="grid grid-cols-2 gap-2">
+            <label class="flex items-center gap-2 cursor-pointer text-sm"><input type="checkbox" name="q-symptom" value="none" class="accent-teal-600 w-4 h-4"> 无明显不适</label>
+            <label class="flex items-center gap-2 cursor-pointer text-sm"><input type="checkbox" name="q-symptom" value="dizzy" class="accent-teal-600 w-4 h-4"> 经常头晕头痛</label>
+            <label class="flex items-center gap-2 cursor-pointer text-sm"><input type="checkbox" name="q-symptom" value="chest" class="accent-teal-600 w-4 h-4"> 胸闷心悸</label>
+            <label class="flex items-center gap-2 cursor-pointer text-sm"><input type="checkbox" name="q-symptom" value="digest" class="accent-teal-600 w-4 h-4"> 消化不良</label>
+            <label class="flex items-center gap-2 cursor-pointer text-sm"><input type="checkbox" name="q-symptom" value="weight" class="accent-teal-600 w-4 h-4"> 体重明显变化</label>
+            <label class="flex items-center gap-2 cursor-pointer text-sm"><input type="checkbox" name="q-symptom" value="fatigue" class="accent-teal-600 w-4 h-4"> 长期疲劳</label>
+          </div>
+        </div>
+      </div>
+      <div class="flex gap-3 mt-6">
+        <button onclick="nextStep(1)" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-600 py-3 rounded-xl font-medium transition-colors">← 上一步</button>
+        <button onclick="nextStep(3)" class="flex-1 bg-teal-600 hover:bg-teal-700 text-white py-3 rounded-xl font-medium transition-colors">下一步 →</button>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div id="step-panel-3" class="hidden">
+      <h2 class="text-lg font-bold text-slate-800 mb-1">体检偏好</h2>
+      <p class="text-sm text-slate-500 mb-5">选择你的预算和重点方向</p>
+      <div class="space-y-5">
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-2">预算范围 <span class="text-red-500">*</span></label>
+          <select id="q-budget" class="w-full border border-slate-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-teal-400">
+            <option value="">请选择预算</option>
+            <option value="300-500">300-500元（基础入门）</option>
+            <option value="500-1000">500-1000元（标准套餐）</option>
+            <option value="1000-2000">1000-2000元（深度检查）</option>
+            <option value="2000-4000">2000-4000元（全面筛查）</option>
+            <option value="4000+">4000元以上（高端深度）</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-2">重点筛查方向（可多选）</label>
+          <div class="grid grid-cols-2 gap-2">
+            <label class="flex items-center gap-2 cursor-pointer text-sm"><input type="checkbox" name="q-focus" value="general" class="accent-teal-600 w-4 h-4"> 常规全面检查</label>
+            <label class="flex items-center gap-2 cursor-pointer text-sm"><input type="checkbox" name="q-focus" value="cancer" class="accent-teal-600 w-4 h-4"> 肿瘤/癌症筛查</label>
+            <label class="flex items-center gap-2 cursor-pointer text-sm"><input type="checkbox" name="q-focus" value="cardio" class="accent-teal-600 w-4 h-4"> 心脑血管检查</label>
+            <label class="flex items-center gap-2 cursor-pointer text-sm"><input type="checkbox" name="q-focus" value="digest" class="accent-teal-600 w-4 h-4"> 消化系统</label>
+            <label class="flex items-center gap-2 cursor-pointer text-sm"><input type="checkbox" name="q-focus" value="thyroid" class="accent-teal-600 w-4 h-4"> 内分泌/甲状腺</label>
+            <label class="flex items-center gap-2 cursor-pointer text-sm"><input type="checkbox" name="q-focus" value="bone" class="accent-teal-600 w-4 h-4"> 骨关节/骨质疏松</label>
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-2">机构偏好 <span class="text-red-500">*</span></label>
+          <div class="flex gap-4">
+            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q-inst" value="any" checked class="accent-teal-600 w-4 h-4"> 均可</label>
+            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q-inst" value="public" class="accent-teal-600 w-4 h-4"> 优先三甲医院</label>
+            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q-inst" value="private" class="accent-teal-600 w-4 h-4"> 优先连锁机构</label>
+          </div>
+        </div>
+      </div>
+      <div class="flex gap-3 mt-6">
+        <button onclick="nextStep(2)" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-600 py-3 rounded-xl font-medium transition-colors">← 上一步</button>
+        <button onclick="generateResult()" class="flex-1 bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-xl font-medium transition-colors">生成推荐方案 →</button>
+      </div>
+    </div>
+
+    <!-- Result -->
+    <div id="result-panel" class="hidden">
+      <div class="text-center py-4">
+        <div class="text-4xl mb-2">🎉</div>
+        <h2 class="text-lg font-bold text-slate-800 mb-1">推荐方案已生成</h2>
+        <p class="text-sm text-slate-500 mb-4">根据你的情况，为你精选以下套餐</p>
+      </div>
+      <div id="resultList"></div>
+      <button onclick="resetForm()" class="mt-4 w-full bg-slate-100 hover:bg-slate-200 text-slate-600 py-3 rounded-xl font-medium transition-colors">← 重新定制</button>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-slate-900 text-slate-400">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+      <div>
+        <div class="flex items-center gap-2 mb-3">
+          <div class="w-7 h-7 bg-teal-600 rounded-lg flex items-center justify-center">
+            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+          </div>
+          <span class="text-white font-semibold">杭州体检网</span>
+        </div>
+        <p class="text-sm leading-relaxed">杭州体检机构信息平台，收录三甲医院及专业体检机构，为杭州居民提供透明的体检信息参考。</p>
+      </div>
+      <div>
+        <h4 class="text-white text-sm font-semibold mb-3">快速导航</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="hospitals/public.html" class="hover:text-teal-400">公立医院</a></li>
+          <li><a href="hospitals/private.html" class="hover:text-teal-400">民营机构</a></li>
+          <li><a href="packages.html" class="hover:text-teal-400">套餐列表</a></li>
+          <li><a href="compare.html" class="hover:text-teal-400">套餐对比</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white text-sm font-semibold mb-3">智能工具</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="custom.html" class="hover:text-teal-400">套餐智能定制</a></li>
+          <li><a href="tips.html" class="hover:text-teal-400">体检注意事项</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-slate-800 pt-6 text-center text-xs text-slate-600">
+      <p>杭州体检网 · 仅供信息参考，套餐价格以各机构实际公布为准 · 2024</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script>
+var currentStep = 1;
+
+function nextStep(n) {
+  if (n === 1) {
+    var age = document.getElementById('q-age').value;
+    var gender = document.querySelector('input[name="q-gender"]:checked');
+    if (!age) { alert('请选择年龄范围'); return; }
+    if (!gender) { alert('请选择性别'); return; }
+  }
+  if (n === 3) {
+    var budget = document.getElementById('q-budget').value;
+    if (!budget) { alert('请选择预算范围'); return; }
+  }
+  document.querySelectorAll('[id^="step-panel-"]').forEach(function(el){ el.classList.add('hidden'); });
+  document.getElementById('step-panel-' + n).classList.remove('hidden');
+  for (var i = 1; i <= 3; i++) {
+    var el = document.getElementById('step' + i);
+    if (i <= n) { el.className = 'w-8 h-8 rounded-full bg-teal-600 text-white flex items-center justify-center text-sm font-bold'; }
+    else { el.className = 'w-8 h-8 rounded-full bg-slate-200 text-slate-400 flex items-center justify-center text-sm font-bold'; }
+  }
+  document.getElementById('stepLine12').style.backgroundColor = n >= 2 ? '#0d9488' : '#e2e8f0';
+  document.getElementById('stepLine23').style.backgroundColor = n >= 3 ? '#0d9488' : '#e2e8f0';
+  document.getElementById('stepLabel').textContent = '第' + n + '步 / 共3步';
+  currentStep = n;
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function generateResult() {
+  var budget = document.getElementById('q-budget').value;
+  var instPref = document.querySelector('input[name="q-inst"]:checked').value;
+  var age = document.getElementById('q-age').value;
+  var focus = Array.from(document.querySelectorAll('[name="q-focus"]:checked')).map(function(el){ return el.value; });
+  var families = Array.from(document.querySelectorAll('[name="q-family"]:checked')).map(function(el){ return el.value; });
+
+  var budgetMap = {
+    '300-500': [0, 500],
+    '500-1000': [500, 1000],
+    '1000-2000': [1000, 2000],
+    '2000-4000': [2000, 4000],
+    '4000+': [4000, 99999]
+  };
+  var range = budgetMap[budget] || [0, 99999];
+
+  var candidates = [];
+  HOSPITALS.forEach(function(h) {
+    if (instPref === 'public' && h.type !== 'public') return;
+    if (instPref === 'private' && h.type !== 'private') return;
+    h.packages.forEach(function(p) {
+      if (p.price < range[0] || p.price > range[1]) return;
+      var score = 0;
+      if (families.indexOf('cancer') > -1 && (p.tags.indexOf('肿瘤') > -1 || p.tags.indexOf('深度') > -1 || p.tags.indexOf('高端') > -1)) score += 3;
+      if (families.indexOf('heart') > -1 && (p.tags.indexOf('心脑') > -1 || p.tags.indexOf('深度') > -1)) score += 3;
+      if (focus.indexOf('cancer') > -1 && (p.tags.indexOf('肿瘤') > -1 || p.tags.indexOf('高端') > -1)) score += 2;
+      if (focus.indexOf('cardio') > -1 && (p.tags.indexOf('心脑') > -1 || p.tags.indexOf('深度') > -1)) score += 2;
+      if (focus.indexOf('bone') > -1 && p.items.indexOf('骨密度') > -1) score += 1;
+      if (focus.indexOf('thyroid') > -1 && p.items.indexOf('甲状腺B超') > -1) score += 1;
+      if ((p.tags.indexOf('深度') > -1 || p.tags.indexOf('高端') > -1) && (age === '45-55' || age === '55-65' || age === '65+')) score += 2;
+      candidates.push(Object.assign({}, p, {score: score, hospitalName: h.name, hospitalType: h.type, hospitalId: h.id}));
+    });
+  });
+
+  candidates.sort(function(a, b){ return b.score - a.score; });
+  var top = candidates.slice(0, 6);
+
+  document.getElementById('step-panel-3').classList.add('hidden');
+  document.getElementById('result-panel').classList.remove('hidden');
+  document.getElementById('stepLabel').textContent = '推荐结果';
+
+  var medals = ['🥇', '🥈', '🥉'];
+  document.getElementById('resultList').innerHTML = top.map(function(p, i) {
+    var typeColor = p.hospitalType === 'public' ? 'teal' : 'blue';
+    var tags = p.tags.map(function(t){ return '<span class="inline-flex items-center px-2 py-0.5 rounded text-xs bg-'+typeColor+'-50 text-'+typeColor+'-700 mr-1">'+t+'</span>'; }).join('');
+    var medal = medals[i] || '';
+    return '<div class="relative bg-slate-50 rounded-xl p-4 mb-3 border border-slate-100">' +
+      (medal ? '<span class="absolute -top-2 -left-2 text-2xl">'+medal+'</span>' : '') +
+      '<div class="flex items-start justify-between mb-2">' +
+        '<div>' +
+          '<h4 class="font-semibold text-slate-800">'+p.name+'</h4>' +
+          '<p class="text-xs text-slate-500">'+p.hospitalName+'</p>' +
+          tags +
+        '</div>' +
+        '<div class="text-right shrink-0 ml-2">' +
+          '<div class="text-'+typeColor+'-600 font-bold text-xl">¥'+p.price+'</div>' +
+          '<div class="text-xs text-slate-400 line-through">¥'+p.originalPrice+'</div>' +
+        '</div>' +
+      '</div>' +
+      '<p class="text-xs text-slate-600 mb-2">适合：'+p.suitable+' | 含 '+p.items.length+' 项检查 | 出报告：'+p.period+'</p>' +
+      '<div class="flex gap-2">' +
+        '<button onclick="addAndCompare(''+p.id+'')" class="text-xs bg-'+typeColor+'-50 text-'+typeColor+'-700 px-3 py-1.5 rounded-lg hover:bg-'+typeColor+'-100 transition-colors">+ 加入对比</button>' +
+        '<button onclick="goHospital(''+p.hospitalType+'')" class="text-xs bg-slate-100 text-slate-600 px-3 py-1.5 rounded-lg hover:bg-slate-200 transition-colors">查看该机构</button>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+}
+
+function addAndCompare(pkgId) {
+  var compare = JSON.parse(sessionStorage.getItem('comparePkgs') || '[]');
+  if (!compare.includes(pkgId) && compare.length < 4) compare.push(pkgId);
+  sessionStorage.setItem('comparePkgs', JSON.stringify(compare));
+  alert('已加入对比！可以去对比页面查看');
+}
+
+function goHospital(type) {
+  location.href = type === 'public' ? 'hospitals/public.html' : 'hospitals/private.html';
+}
+
+function resetForm() {
+  document.getElementById('result-panel').classList.add('hidden');
+  document.getElementById('step-panel-1').classList.remove('hidden');
+  document.getElementById('step1').className = 'w-8 h-8 rounded-full bg-teal-600 text-white flex items-center justify-center text-sm font-bold';
+  document.getElementById('step2').className = 'w-8 h-8 rounded-full bg-slate-200 text-slate-400 flex items-center justify-center text-sm font-bold';
+  document.getElementById('step3').className = 'w-8 h-8 rounded-full bg-slate-200 text-slate-400 flex items-center justify-center text-sm font-bold';
+  document.getElementById('stepLine12').style.backgroundColor = '#e2e8f0';
+  document.getElementById('stepLine23').style.backgroundColor = '#e2e8f0';
+  document.getElementById('stepLabel').textContent = '第1步 / 共3步';
+}
+</script>
+</body>
+</html>

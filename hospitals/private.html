@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>民营机构 - 杭州体检网</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config={theme:{extend:{colors:{teal:{50:'#f0fdfa',100:'#ccfbf1',200:'#99f6e4',300:'#5eead4',400:'#2dd4bf',500:'#14b8a6',600:'#0d9488',700:'#0f766e',800:'#115e59',900:'#134e4a'}}}}}
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-slate-50 text-slate-800">
+<nav class="bg-white/95 backdrop-blur-sm sticky top-0 z-50 border-b border-slate-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="flex items-center justify-between h-16">
+      <a href="index.html" class="flex items-center gap-2">
+        <div class="w-8 h-8 bg-teal-600 rounded-lg flex items-center justify-center">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+        </div>
+        <span class="text-lg font-bold text-teal-700">杭州体检网</span>
+      </a>
+      <div class="hidden md:flex items-center gap-1">
+        <a href="hospitals/public.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-teal-600 hover:bg-teal-50 transition-colors">🏥 机构</a>
+        <a href="packages.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-teal-600 hover:bg-teal-50 transition-colors">📋 套餐</a>
+        <a href="compare.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-teal-600 hover:bg-teal-50 transition-colors">⚖️ 对比</a>
+        <a href="custom.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-teal-600 hover:bg-teal-50 transition-colors">🎯 定制</a>
+        <a href="tips.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-teal-600 hover:bg-teal-50 transition-colors">📖 注意</a>
+        <a href="compare.html" class="ml-3 inline-flex items-center px-5 py-2.5 bg-teal-600 hover:bg-teal-700 text-white text-sm font-medium rounded-lg transition-colors">开始对比</a>
+      </div>
+    </div>
+  </div>
+</nav>
+<section class="bg-gradient-to-r from-blue-600 to-blue-700 text-white py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <h1 class="text-2xl font-bold mb-2">🏢 杭州专业体检机构</h1>
+    <p class="text-blue-100 text-sm">收录杭州10家专业体检机构，全国连锁品牌，环境好预约快，性价比高</p>
+  </div>
+</section>
+<section class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5" id="hospitalGrid"></div>
+</section>
+<footer class="bg-slate-900 text-slate-400">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+      <div>
+        <div class="flex items-center gap-2 mb-3">
+          <div class="w-7 h-7 bg-teal-600 rounded-lg flex items-center justify-center">
+            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+          </div>
+          <span class="text-white font-semibold">杭州体检网</span>
+        </div>
+        <p class="text-sm leading-relaxed">杭州体检机构信息平台，收录三甲医院及专业体检机构，为杭州居民提供透明的体检信息参考。</p>
+      </div>
+      <div>
+        <h4 class="text-white text-sm font-semibold mb-3">快速导航</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="hospitals/public.html" class="hover:text-teal-400">公立医院</a></li>
+          <li><a href="hospitals/private.html" class="hover:text-teal-400">民营机构</a></li>
+          <li><a href="packages.html" class="hover:text-teal-400">套餐列表</a></li>
+          <li><a href="compare.html" class="hover:text-teal-400">套餐对比</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white text-sm font-semibold mb-3">智能工具</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="custom.html" class="hover:text-teal-400">套餐智能定制</a></li>
+          <li><a href="tips.html" class="hover:text-teal-400">体检注意事项</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-slate-800 pt-6 text-center text-xs text-slate-600">
+      <p>杭州体检网 · 仅供信息参考，套餐价格以各机构实际公布为准 · 2024</p>
+    </div>
+  </div>
+</footer>
+<script src="js/data.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var grid = document.getElementById('hospitalGrid');
+  HOSPITALS.filter(function(h){ return h.type==='private'; }).forEach(function(h) {
+    var minPkg = h.packages ? Math.min.apply(null, h.packages.map(function(p){return p.price;})) : 0;
+    var intro = h.intro.length > 80 ? h.intro.substring(0,80)+'...' : h.intro;
+    grid.innerHTML += '<div class="bg-white rounded-2xl border border-slate-100 overflow-hidden card-hover">'+
+      '<div class="h-40 bg-gradient-to-br from-blue-50 to-slate-100 flex items-center justify-center text-5xl">🏢</div>'+
+      '<div class="p-5">'+
+        '<div class="flex items-start justify-between gap-2 mb-2">'+
+          '<h3 class="font-semibold text-slate-800 leading-tight flex-1">'+h.name+'</h3>'+
+          '<span class="shrink-0 bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full font-medium">'+h.level+'</span>'+
+        '</div>'+
+        '<p class="text-slate-500 text-xs mb-2">📍 '+h.address+'</p>'+
+        '<p class="text-slate-600 text-xs mb-3 line-clamp-2">'+intro+'</p>'+
+        '<div class="flex items-center justify-between">'+
+          '<div class="text-blue-600 font-bold text-sm">¥'+minPkg+'<span class="text-slate-400 font-normal text-xs">/人起</span></div>'+
+          '<button onclick="showHospital(\''+h.id+'\')" class="text-xs text-blue-600 hover:text-blue-700 font-medium">查看套餐 →</button>'+
+        '</div>'+
+        '<div class="mt-3 border-t border-slate-100 pt-3">'+
+          '<p class="text-xs text-slate-500 mb-1"><span class="font-medium text-slate-700">特色：</span>'+h.highlight+'</p>'+
+          '<p class="text-xs text-slate-500"><span class="font-medium text-slate-700">电话：</span>'+h.tel+'</p>'+
+        '</div>'+
+      '</div>'+
+    '</div>';
+  });
+});
+function showHospital(id) {
+  var h = HOSPITALS.find(function(x){ return x.id===id; });
+  if(!h) return;
+  var modal = document.createElement('div');
+  modal.id='modal';
+  modal.className='fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4';
+  modal.onclick=function(e){ if(e.target===modal) modal.remove(); };
+  var pkgHtml = h.packages.map(function(p){
+    var tags = p.tags.map(function(t){ return '<span class="inline-flex items-center px-2 py-0.5 rounded text-xs bg-blue-50 text-blue-700 mr-1">'+t+'</span>'; }).join('');
+    var itemsHtml = p.items.map(function(i){ return '<span class="text-slate-600">• '+i+'</span>'; }).join('');
+    return '<div class="bg-slate-50 rounded-xl p-4 mb-3">'+
+      '<div class="flex items-start justify-between mb-2">'+
+        '<div><h4 class="font-medium text-slate-800">'+p.name+'</h4>'+tags+'</div>'+
+        '<div class="text-right shrink-0 ml-2"><div class="text-blue-600 font-bold text-lg">¥'+p.price+'</div><div class="text-slate-400 text-xs line-through">¥'+p.originalPrice+'</div></div>'+
+      '</div>'+
+      '<p class="text-xs text-slate-500 mb-2">适合：'+p.suitable+' | 出报告：'+p.period+'</p>'+
+      '<details class="text-xs"><summary class="cursor-pointer text-blue-600 font-medium mb-1">查看包含项目（'+p.items.length+'项）</summary>'+
+        '<div class="grid grid-cols-2 gap-1 mt-2">'+itemsHtml+'</div>'+
+      '</details>'+
+      '<button onclick="addToCompare(\''+p.id+'\')" class="mt-2 text-xs bg-blue-50 text-blue-700 px-3 py-1.5 rounded-lg hover:bg-blue-100 transition-colors">+ 加入对比</button>'+
+    '</div>';
+  }).join('');
+  modal.innerHTML='<div class="bg-white rounded-2xl max-w-lg w-full max-h-[85vh] overflow-y-auto">'+
+    '<div class="sticky top-0 bg-white border-b border-slate-100 p-5 flex items-start justify-between">'+
+      '<div><h3 class="font-bold text-lg text-slate-800">'+h.name+'</h3><span class="text-xs text-slate-500">'+h.level+' | '+h.address+'</span></div>'+
+      '<button onclick="this.closest(\'#modal\').remove()" class="text-slate-400 hover:text-slate-600 text-xl">×</button>'+
+    '</div>'+
+    '<div class="p-5">'+
+      '<p class="text-sm text-slate-600 mb-4">'+h.intro+'</p>'+
+      '<p class="text-xs text-slate-500 mb-4">⏰ '+h.hours+' | 📞 '+h.tel+'</p>'+
+      '<h4 class="font-semibold text-slate-800 mb-3">可选套餐</h4>'+pkgHtml+
+    '</div>'+
+  '</div>';
+  document.body.appendChild(modal);
+}
+function addToCompare(pkgId) {
+  var compare = JSON.parse(sessionStorage.getItem('comparePkgs') || '[]');
+  if(compare.includes(pkgId)){ alert('已在对比列表中'); return; }
+  if(compare.length>=4){ alert('最多对比4个套餐'); return; }
+  compare.push(pkgId);
+  sessionStorage.setItem('comparePkgs', JSON.stringify(compare));
+  alert('已加入对比，可在对比页面查看');
+}
+</script>
+</body>
+</html>

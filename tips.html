@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>注意事项 - 杭州体检网</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config={theme:{extend:{colors:{teal:{50:'#f0fdfa',100:'#ccfbf1',200:'#99f6e4',300:'#5eead4',400:'#2dd4bf',500:'#14b8a6',600:'#0d9488',700:'#0f766e',800:'#115e59',900:'#134e4a'}}}}}
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-slate-50 text-slate-800">
+<nav class="bg-white/95 backdrop-blur-sm sticky top-0 z-50 border-b border-slate-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="flex items-center justify-between h-16">
+      <a href="index.html" class="flex items-center gap-2">
+        <div class="w-8 h-8 bg-teal-600 rounded-lg flex items-center justify-center">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+        </div>
+        <span class="text-lg font-bold text-teal-700">杭州体检网</span>
+      </a>
+      <div class="hidden md:flex items-center gap-1">
+        <a href="hospitals/public.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-teal-600 hover:bg-teal-50 transition-colors">🏥 机构</a>
+        <a href="packages.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-teal-600 hover:bg-teal-50 transition-colors">📋 套餐</a>
+        <a href="compare.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-teal-600 hover:bg-teal-50 transition-colors">⚖️ 对比</a>
+        <a href="custom.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-teal-600 hover:bg-teal-50 transition-colors">🎯 定制</a>
+        <a href="tips.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-teal-600 hover:bg-teal-50 transition-colors">📖 注意</a>
+        <a href="compare.html" class="ml-3 inline-flex items-center px-5 py-2.5 bg-teal-600 hover:bg-teal-700 text-white text-sm font-medium rounded-lg transition-colors">开始对比</a>
+      </div>
+    </div>
+  </div>
+</nav>
+<section class="bg-gradient-to-r from-amber-500 to-orange-500 text-white py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <h1 class="text-2xl font-bold mb-2">📖 体检注意事项</h1>
+    <p class="text-amber-100 text-sm">检前、检中、检后完整指南，确保体检结果准确可靠</p>
+  </div>
+</section>
+<section class="max-w-4xl mx-auto px-4 sm:px-6 py-10">
+  <div class="grid grid-cols-3 gap-3 mb-8">
+    <button onclick="showSection(\'before\')" id="tab-before" class="tip-tab px-4 py-3 rounded-xl text-sm font-medium bg-amber-500 text-white text-center">🕐 检前注意</button>
+    <button onclick="showSection(\'during\')" id="tab-during" class="tip-tab px-4 py-3 rounded-xl text-sm font-medium bg-slate-100 text-slate-600 text-center">🏥 检中注意</button>
+    <button onclick="showSection(\'after\')" id="tab-after" class="tip-tab px-4 py-3 rounded-xl text-sm font-medium bg-slate-100 text-slate-600 text-center">📋 检后注意</button>
+  </div>
+  <div id="tips-before"></div>
+  <div id="tips-during" class="hidden"></div>
+  <div id="tips-after" class="hidden"></div>
+  <div class="mt-10">
+    <h2 class="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+      <span class="w-1.5 h-6 bg-amber-500 rounded-full"></span>常见问题 FAQ
+    </h2>
+    <div class="space-y-3" id="faqList"></div>
+  </div>
+</section>
+<footer class="bg-slate-900 text-slate-400">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+      <div>
+        <div class="flex items-center gap-2 mb-3">
+          <div class="w-7 h-7 bg-teal-600 rounded-lg flex items-center justify-center">
+            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+          </div>
+          <span class="text-white font-semibold">杭州体检网</span>
+        </div>
+        <p class="text-sm leading-relaxed">杭州体检机构信息平台，收录三甲医院及专业体检机构，为杭州居民提供透明的体检信息参考。</p>
+      </div>
+      <div>
+        <h4 class="text-white text-sm font-semibold mb-3">快速导航</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="hospitals/public.html" class="hover:text-teal-400">公立医院</a></li>
+          <li><a href="hospitals/private.html" class="hover:text-teal-400">民营机构</a></li>
+          <li><a href="packages.html" class="hover:text-teal-400">套餐列表</a></li>
+          <li><a href="compare.html" class="hover:text-teal-400">套餐对比</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white text-sm font-semibold mb-3">智能工具</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="custom.html" class="hover:text-teal-400">套餐智能定制</a></li>
+          <li><a href="tips.html" class="hover:text-teal-400">体检注意事项</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-slate-800 pt-6 text-center text-xs text-slate-600">
+      <p>杭州体检网 · 仅供信息参考，套餐价格以各机构实际公布为准 · 2024</p>
+    </div>
+  </div>
+</footer>
+<script src="js/data.js"></script>
+<script>
+function showSection(name){
+  ["before","during","after"].forEach(function(s){
+    document.getElementById("tips-"+s).classList.add("hidden");
+  });
+  document.getElementById("tips-"+name).classList.remove("hidden");
+  document.querySelectorAll(".tip-tab").forEach(function(el,i){
+    var secs=["before","during","after"];
+    var active=secs[i]===name;
+    el.className="tip-tab px-4 py-3 rounded-xl text-sm font-medium "+(active?"bg-amber-500 text-white text-center":"bg-slate-100 text-slate-600 text-center");
+  });
+}
+function toggleFaq(el){el.classList.toggle("faq-open");}
+function renderTips(){
+  var catMap={before:TIPS.before,during:TIPS.during,after:TIPS.after};
+  var catInfo={before:{icon:"🕐",color:"amber",name:"检前注意"},during:{icon:"🏥",color:"blue",name:"检中注意"},after:{icon:"📋",color:"green",name:"检后注意"}};
+  ["before","during","after"].forEach(function(cat){
+    var tips=catMap[cat];
+    var info=catInfo[cat];
+    var items=tips.map(function(t,i){
+      return '<div class="faq-item" onclick="toggleFaq(this)">'+
+        '<div class="flex items-center justify-between p-5 cursor-pointer hover:bg-slate-50">'+
+          '<div class="flex items-center gap-3 flex-1">'+
+            '<span class="text-'+info.color+'-500 font-bold text-sm">'+String(i+1).padStart(2,"0")+'<\/span>'+
+            '<span class="font-medium text-slate-800 text-sm">'+t.q+'<\/span>'+
+          '<\/div>'+
+          '<svg class="faq-icon w-4 h-4 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"\/><\/svg>'+
+        '<\/div>'+
+        '<div class="faq-answer px-5 pb-5 pl-11 text-sm text-slate-600 leading-relaxed">'+t.a+'<\/div>'+
+      '<\/div>';
+    }).join("");
+    document.getElementById("tips-"+cat).innerHTML='<div class="bg-white rounded-2xl border border-slate-100 divide-y divide-slate-100"><div class="p-5"><h2 class="font-bold text-lg text-slate-800 flex items-center gap-2">'+info.icon+' '+info.name+'<\/h2><\/div>'+items+'<\/div>';
+  });
+  var faqData=[
+    {q:"体检需要预约吗？",a:"建议提前预约，尤其是三甲医院体检中心。公立医院体检中心周一至周五服务，周六部分开诊；民营机构通常周一至周日营业。预约可避免长时间等候。"},
+    {q:"体检可以用医保吗？",a:"常规体检一般不能使用医保卡（医保仅覆盖疾病诊疗），但部分项目可能支持医保个人账户支付。高端套餐和民营机构通常需自费。"},
+    {q:"体检当天需要带什么？",a:"请携带身份证原件。有既往病史或正在服药的，建议携带病历本和药物清单。女士如预约了妇科检查，请携带有效身份证件。"},
+    {q:"女性月经期可以体检吗？",a:"建议避开月经期进行体检。尿常规、妇科检查等项目在经期检查会影响结果准确性。建议预约月经结束后3-7天。"},
+    {q:"体检完成后多久可以进食？",a:"完成空腹项目（抽血、腹部B超、碳呼气试验等）后即可进食。建议自备早餐，或在体检机构用餐。部分机构提供免费早餐。"}
+  ];
+  document.getElementById("faqList").innerHTML=faqData.map(function(f,i){
+    return '<div class="faq-item bg-white rounded-xl border border-slate-100" onclick="toggleFaq(this)">'+
+      '<div class="flex items-center justify-between p-5 cursor-pointer hover:bg-slate-50">'+
+        '<div class="flex items-center gap-3 flex-1">'+
+          '<span class="bg-amber-100 text-amber-700 text-xs font-bold px-2 py-0.5 rounded">Q'+(i+1)+'<\/span>'+
+          '<span class="font-medium text-slate-800 text-sm">'+f.q+'<\/span>'+
+        '<\/div>'+
+        '<svg class="faq-icon w-4 h-4 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"\/><\/svg>'+
+      '<\/div>'+
+      '<div class="faq-answer px-5 pb-5 pl-14 text-sm text-slate-600 leading-relaxed">'+f.a+'<\/div>'+
+    '<\/div>';
+  }).join("");
+}
+document.addEventListener("DOMContentLoaded",renderTips);
+</script>
+</body>
+</html>

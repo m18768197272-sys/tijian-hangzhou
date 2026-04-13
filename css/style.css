@@ -1,0 +1,28 @@
+/* 杭州体检网 - 自定义样式 */
+/* 页面加载动画 */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-in-up { animation: fadeInUp 0.5s ease-out forwards; }
+
+/* 卡片悬停 */
+.card-hover { transition: transform 0.2s, box-shadow 0.2s; }
+.card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(13,148,136,0.15); }
+
+/* 套餐对比表格 */
+.compare-highlight { background-color: #f0fdfa !important; }
+.compare-diff { background-color: #fef3c7; }
+
+/* 问卷步骤 */
+.step-active { background-color: #0d9488; color: white; }
+.step-inactive { background-color: #e2e8f0; color: #64748b; }
+
+/* FAQ手风琴 */
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+.faq-open .faq-answer { max-height: 500px; }
+.faq-icon { transition: transform 0.3s; }
+.faq-open .faq-icon { transform: rotate(180deg); }
+
+/* 套餐标签 */
+.tag { @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium; }

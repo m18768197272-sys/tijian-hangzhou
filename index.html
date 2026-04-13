@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>杭州体检网 - 找靠谱体检，就在这里</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            teal: { 50:'#f0fdfa', 100:'#ccfbf1', 200:'#99f6e4', 300:'#5eead4', 400:'#2dd4bf', 500:'#14b8a6', 600:'#0d9488', 700:'#0f766e', 800:'#115e59', 900:'#134e4a' },
+            med: { 50:'#eff6ff', 100:'#dbeafe', 500:'#3b82f6', 600:'#2563eb', 700:'#1d4ed8' }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .hero-bg { background: linear-gradient(135deg, #0f766e 0%, #0d9488 40%, #14b8a6 70%, #2dd4bf 100%); }
+    .card-hover { transition: transform 0.2s, box-shadow 0.2s; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(13,148,136,0.15); }
+    .badge { @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-teal-100 text-teal-800; }
+    .nav-link { @apply px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-teal-600 hover:bg-teal-50 transition-colors; }
+    .btn-primary { @apply inline-flex items-center px-5 py-2.5 bg-teal-600 hover:bg-teal-700 text-white text-sm font-medium rounded-lg transition-colors; }
+    .section-title { @apply text-2xl font-bold text-slate-800 mb-2; }
+    .section-sub { @apply text-slate-500 text-sm; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+<!-- 导航栏 -->
+<nav class="bg-white/95 backdrop-blur-sm sticky top-0 z-50 border-b border-slate-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="flex items-center justify-between h-16">
+      <a href="index.html" class="flex items-center gap-2">
+        <div class="w-8 h-8 bg-teal-600 rounded-lg flex items-center justify-center">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+        </div>
+        <span class="text-lg font-bold text-teal-700">杭州体检网</span>
+      </a>
+      <div class="hidden md:flex items-center gap-1">
+        <a href="hospitals/public.html" class="nav-link">🏥 机构</a>
+        <a href="packages.html" class="nav-link">📋 套餐</a>
+        <a href="compare.html" class="nav-link">⚖️ 对比</a>
+        <a href="custom.html" class="nav-link">🎯 定制</a>
+        <a href="tips.html" class="nav-link">📖 注意</a>
+        <a href="compare.html" class="btn-primary ml-3">开始对比</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero区 -->
+<section class="hero-bg text-white relative overflow-hidden">
+  <div class="absolute inset-0 opacity-10">
+    <svg width="100%" height="100%"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="0.5"/></pattern></defs><rect width="100%" height="100%" fill="url(#grid)"/></svg>
+  </div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-24 text-center relative">
+    <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-1.5 mb-6 text-sm">
+      <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+      杭州 20+ 体检机构实时数据
+    </div>
+    <h1 class="text-3xl md:text-5xl font-bold mb-4 leading-tight">
+      找到最适合你的<br><span class="text-teal-200">体检套餐</span>
+    </h1>
+    <p class="text-teal-100 text-base md:text-lg mb-8 max-w-2xl mx-auto">
+      收录杭州20家权威体检机构，公立三甲到专业连锁全覆盖<br class="hidden md:block">
+      支持套餐对比、智能定制、价格透明
+    </p>
+    <div class="flex flex-col sm:flex-row gap-3 justify-center mb-10">
+      <a href="hospitals/public.html" class="bg-white text-teal-700 font-semibold px-6 py-3 rounded-xl hover:bg-teal-50 transition-colors shadow-lg">🏥 浏览机构</a>
+      <a href="custom.html" class="border-2 border-white/50 text-white font-semibold px-6 py-3 rounded-xl hover:bg-white/10 transition-colors">🎯 智能定制套餐</a>
+    </div>
+    <!-- 搜索框 -->
+    <div class="max-w-xl mx-auto">
+      <div class="bg-white/20 backdrop-blur-sm rounded-2xl p-2 flex gap-2">
+        <input type="text" id="heroSearch" placeholder="搜索医院名称、套餐关键词..." class="flex-1 bg-white rounded-xl px-4 py-3 text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-teal-300 placeholder-slate-400">
+        <button onclick="heroSearch()" class="bg-white text-teal-700 px-5 py-3 rounded-xl text-sm font-semibold hover:bg-teal-50 transition-colors whitespace-nowrap">搜索</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 数据统计 -->
+<section class="bg-white border-b border-slate-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-6">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+      <div><div class="text-2xl font-bold text-teal-600">20</div><div class="text-xs text-slate-500 mt-1">收录机构</div></div>
+      <div><div class="text-2xl font-bold text-teal-600">60+</div><div class="text-xs text-slate-500 mt-1">精选套餐</div></div>
+      <div><div class="text-2xl font-bold text-teal-600">10</div><div class="text-xs text-slate-500 mt-1">三甲医院</div></div>
+      <div><div class="text-2xl font-bold text-teal-600">0</div><div class="text-xs text-slate-500 mt-1">费用全免</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 四大功能 -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 py-14">
+  <div class="text-center mb-10">
+    <h2 class="section-title">网站核心功能</h2>
+    <p class="section-sub">从选机构到出报告，全程陪跑</p>
+  </div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+    <a href="hospitals/public.html" class="card-hover bg-white rounded-2xl p-6 border border-slate-100 block">
+      <div class="w-12 h-12 bg-teal-50 rounded-xl flex items-center justify-center mb-4 text-2xl">🏥</div>
+      <h3 class="font-semibold text-slate-800 mb-2">机构查询</h3>
+      <p class="text-slate-500 text-sm leading-relaxed">收录杭州20家体检机构，公立三甲和民营机构分类展示，地址电话一应俱全</p>
+      <div class="mt-4 text-teal-600 text-sm font-medium flex items-center gap-1">查看机构 →</div>
+    </a>
+    <a href="compare.html" class="card-hover bg-white rounded-2xl p-6 border border-slate-100 block">
+      <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-4 text-2xl">⚖️</div>
+      <h3 class="font-semibold text-slate-800 mb-2">套餐对比</h3>
+      <p class="text-slate-500 text-sm leading-relaxed">选择多个套餐横向对比，差异项目高亮显示，快速找出最适合自己的</p>
+      <div class="mt-4 text-blue-600 text-sm font-medium flex items-center gap-1">开始对比 →</div>
+    </a>
+    <a href="custom.html" class="card-hover bg-white rounded-2xl p-6 border border-slate-100 block">
+      <div class="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center mb-4 text-2xl">🎯</div>
+      <h3 class="font-semibold text-slate-800 mb-2">智能定制</h3>
+      <p class="text-slate-500 text-sm leading-relaxed">回答几个简单问题，系统自动推荐最适合你的体检套餐组合</p>
+      <div class="mt-4 text-purple-600 text-sm font-medium flex items-center gap-1">开始定制 →</div>
+    </a>
+    <a href="tips.html" class="card-hover bg-white rounded-2xl p-6 border border-slate-100 block">
+      <div class="w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center mb-4 text-2xl">📖</div>
+      <h3 class="font-semibold text-slate-800 mb-2">注意事项</h3>
+      <p class="text-slate-500 text-sm leading-relaxed">体检前中后完整注意事项，常见问题解答，确保体检结果准确</p>
+      <div class="mt-4 text-amber-600 text-sm font-medium flex items-center gap-1">了解更多 →</div>
+    </a>
+  </div>
+</section>
+
+<!-- 精选公立医院 -->
+<section class="bg-white border-t border-slate-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14">
+    <div class="flex items-end justify-between mb-8">
+      <div>
+        <div class="flex items-center gap-2 mb-1">
+          <span class="w-1.5 h-5 bg-teal-600 rounded-full"></span>
+          <h2 class="section-title">公立三甲医院</h2>
+        </div>
+        <p class="section-sub">浙江大学医学院附属、省市重点医院体检中心</p>
+      </div>
+      <a href="hospitals/public.html" class="text-teal-600 text-sm font-medium hover:text-teal-700">查看全部10家 →</a>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5" id="pubList"></div>
+  </div>
+</section>
+
+<!-- 精选民营机构 -->
+<section class="bg-slate-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14">
+    <div class="flex items-end justify-between mb-8">
+      <div>
+        <div class="flex items-center gap-2 mb-1">
+          <span class="w-1.5 h-5 bg-blue-600 rounded-full"></span>
+          <h2 class="section-title">专业体检机构</h2>
+        </div>
+        <p class="section-sub">全国连锁品牌，环境好预约快，性价比高</p>
+      </div>
+      <a href="hospitals/private.html" class="text-blue-600 text-sm font-medium hover:text-blue-700">查看全部10家 →</a>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5" id="priList"></div>
+  </div>
+</section>
+
+<!-- 热门套餐 -->
+<section class="bg-white border-t border-slate-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14">
+    <div class="flex items-end justify-between mb-8">
+      <div>
+        <div class="flex items-center gap-2 mb-1">
+          <span class="w-1.5 h-5 bg-purple-600 rounded-full"></span>
+          <h2 class="section-title">热门套餐</h2>
+        </div>
+        <p class="section-sub">各机构点击量最高的套餐</p>
+      </div>
+      <a href="packages.html" class="text-purple-600 text-sm font-medium hover:text-purple-700">查看全部套餐 →</a>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" id="pkgList"></div>
+  </div>
+</section>
+
+<!-- 底部 -->
+<footer class="bg-slate-900 text-slate-400">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+      <div>
+        <div class="flex items-center gap-2 mb-3">
+          <div class="w-7 h-7 bg-teal-600 rounded-lg flex items-center justify-center">
+            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+          </div>
+          <span class="text-white font-semibold">杭州体检网</span>
+        </div>
+        <p class="text-sm leading-relaxed">杭州体检机构信息平台，收录三甲医院及专业体检机构，为杭州居民提供透明的体检信息参考。</p>
+      </div>
+      <div>
+        <h4 class="text-white text-sm font-semibold mb-3">快速导航</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="hospitals/public.html" class="hover:text-teal-400">公立医院</a></li>
+          <li><a href="hospitals/private.html" class="hover:text-teal-400">民营机构</a></li>
+          <li><a href="packages.html" class="hover:text-teal-400">套餐列表</a></li>
+          <li><a href="compare.html" class="hover:text-teal-400">套餐对比</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white text-sm font-semibold mb-3">智能工具</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="custom.html" class="hover:text-teal-400">套餐智能定制</a></li>
+          <li><a href="tips.html" class="hover:text-teal-400">体检注意事项</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-slate-800 pt-6 text-center text-xs text-slate-600">
+      <p>杭州体检网 · 仅供信息参考，套餐价格以各机构实际公布为准 · 2024</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // 公立医院精选3个
+    const pub3 = HOSPITALS.filter(h => h.type === 'public').slice(0, 3);
+    document.getElementById('pubList').innerHTML = pub3.map(h => renderHospitalCard(h)).join('');
+    // 民营精选3个
+    const pri3 = HOSPITALS.filter(h => h.type === 'private').slice(0, 3);
+    document.getElementById('priList').innerHTML = pri3.map(h => renderHospitalCard(h)).join('');
+    // 热门套餐
+    const allPkgs = HOSPITALS.flatMap(h => (h.packages || []).map(p => ({...p, hospitalName: h.name, hospitalId: h.id})));
+    const topPkgs = allPkgs.sort(() => Math.random() - 0.5).slice(0, 8);
+    document.getElementById('pkgList').innerHTML = topPkgs.map(p => renderPackageCard(p)).join('');
+  });
+  function heroSearch() {
+    const q = document.getElementById('heroSearch').value.trim();
+    if (!q) { alert('请输入搜索关键词'); return; }
+    sessionStorage.setItem('searchQ', q);
+    location.href = 'packages.html';
+  }
+</script>
+</body>
+</html>

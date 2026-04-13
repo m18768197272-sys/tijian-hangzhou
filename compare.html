@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>套餐对比 - 杭州体检网</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config={theme:{extend:{colors:{teal:{50:'#f0fdfa',100:'#ccfbf1',200:'#99f6e4',300:'#5eead4',400:'#2dd4bf',500:'#14b8a6',600:'#0d9488',700:'#0f766e',800:'#115e59',900:'#134e4a'}}}}}
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-slate-50 text-slate-800">
+<nav class="bg-white/95 backdrop-blur-sm sticky top-0 z-50 border-b border-slate-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="flex items-center justify-between h-16">
+      <a href="index.html" class="flex items-center gap-2">
+        <div class="w-8 h-8 bg-teal-600 rounded-lg flex items-center justify-center">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+        </div>
+        <span class="text-lg font-bold text-teal-700">杭州体检网</span>
+      </a>
+      <div class="hidden md:flex items-center gap-1">
+        <a href="hospitals/public.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-teal-600 hover:bg-teal-50 transition-colors">🏥 机构</a>
+        <a href="packages.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-teal-600 hover:bg-teal-50 transition-colors">📋 套餐</a>
+        <a href="compare.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-teal-600 hover:bg-teal-50 transition-colors">⚖️ 对比</a>
+        <a href="custom.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-teal-600 hover:bg-teal-50 transition-colors">🎯 定制</a>
+        <a href="tips.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-teal-600 hover:bg-teal-50 transition-colors">📖 注意</a>
+        <a href="compare.html" class="ml-3 inline-flex items-center px-5 py-2.5 bg-teal-600 hover:bg-teal-700 text-white text-sm font-medium rounded-lg transition-colors">开始对比</a>
+      </div>
+    </div>
+  </div>
+</nav>
+<section class="bg-gradient-to-r from-teal-600 to-blue-600 text-white py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <h1 class="text-2xl font-bold mb-2">⚖️ 套餐对比工具</h1>
+    <p class="text-teal-100 text-sm">选择2-4个套餐，横向对比项目差异，高亮显示不同点</p>
+  </div>
+</section>
+<section class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
+  <div class="bg-white rounded-2xl border border-slate-100 p-6 mb-6">
+    <h3 class="font-semibold text-slate-800 mb-3">已选套餐（<span id="compareCount">0</span>/4）</h3>
+    <div id="compareBar" class="flex flex-wrap gap-2 mb-4"></div>
+    <div class="flex gap-3">
+      <select id="addPkgSelect" class="flex-1 border border-slate-200 rounded-lg px-3 py-2 text-sm">
+        <option value="">-- 从套餐列表添加 --</option>
+      </select>
+      <button onclick="addPkg()" class="bg-teal-600 hover:bg-teal-700 text-white px-5 py-2 rounded-lg text-sm font-medium">添加</button>
+      <button onclick="clearCompare()" class="bg-slate-100 hover:bg-slate-200 text-slate-600 px-5 py-2 rounded-lg text-sm font-medium">清空</button>
+    </div>
+  </div>
+  <div id="compareTable" class="bg-white rounded-2xl border border-slate-100 overflow-hidden"></div>
+</section>
+<footer class="bg-slate-900 text-slate-400">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+      <div>
+        <div class="flex items-center gap-2 mb-3">
+          <div class="w-7 h-7 bg-teal-600 rounded-lg flex items-center justify-center">
+            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+          </div>
+          <span class="text-white font-semibold">杭州体检网</span>
+        </div>
+        <p class="text-sm leading-relaxed">杭州体检机构信息平台，收录三甲医院及专业体检机构，为杭州居民提供透明的体检信息参考。</p>
+      </div>
+      <div>
+        <h4 class="text-white text-sm font-semibold mb-3">快速导航</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="hospitals/public.html" class="hover:text-teal-400">公立医院</a></li>
+          <li><a href="hospitals/private.html" class="hover:text-teal-400">民营机构</a></li>
+          <li><a href="packages.html" class="hover:text-teal-400">套餐列表</a></li>
+          <li><a href="compare.html" class="hover:text-teal-400">套餐对比</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white text-sm font-semibold mb-3">智能工具</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="custom.html" class="hover:text-teal-400">套餐智能定制</a></li>
+          <li><a href="tips.html" class="hover:text-teal-400">体检注意事项</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-slate-800 pt-6 text-center text-xs text-slate-600">
+      <p>杭州体检网 · 仅供信息参考，套餐价格以各机构实际公布为准 · 2024</p>
+    </div>
+  </div>
+</footer>
+<script src="js/data.js"></script>
+<script>
+var allPkgs=[];
+HOSPITALS.forEach(function(h){h.packages.forEach(function(p){allPkgs.push(Object.assign({},p,{hospitalName:h.name,hospitalId:h.id}));});});
+var sel=document.getElementById("addPkgSelect");
+allPkgs.forEach(function(p){
+  var opt=document.createElement("option");opt.value=p.id;
+  opt.textContent=p.name+" - "+p.hospitalName+" - ¥"+p.price;
+  sel.appendChild(opt);
+});
+function loadCompare(){
+  var ids=JSON.parse(sessionStorage.getItem("comparePkgs")||"[]");
+  document.getElementById("compareCount").textContent=ids.length;
+  var bar=document.getElementById("compareBar");
+  bar.innerHTML=ids.map(function(id){
+    var p=allPkgs.find(function(x){return x.id===id;});
+    if(!p)return"";
+    return '<span class="inline-flex items-center gap-1 bg-teal-50 text-teal-700 px-3 py-1.5 rounded-full text-sm">\${p.name} <button onclick="removeCompare(\'\${id}\')" class="text-teal-400 hover:text-teal-700 ml-1">×<\/button><\/span>';
+  }).join("");
+  renderTable(ids);
+}
+function addPkg(){
+  var id=document.getElementById("addPkgSelect").value;
+  if(!id)return;
+  var ids=JSON.parse(sessionStorage.getItem("comparePkgs")||"[]");
+  if(ids.includes(id)){alert("已在对比列表");return;}
+  if(ids.length>=4){alert("最多4个");return;}
+  ids.push(id);
+  sessionStorage.setItem("comparePkgs",JSON.stringify(ids));
+  loadCompare();
+}
+function removeCompare(id){
+  var ids=JSON.parse(sessionStorage.getItem("comparePkgs")||"[]");
+  sessionStorage.setItem("comparePkgs",JSON.stringify(ids.filter(function(x){return x!==id;})));
+  loadCompare();
+}
+function clearCompare(){sessionStorage.removeItem("comparePkgs");loadCompare();}
+function renderTable(ids){
+  var table=document.getElementById("compareTable");
+  if(ids.length<2){table.innerHTML='<div class="p-10 text-center text-slate-400">请至少选择2个套餐进行对比<\/div>';return;}
+  var pkgs=ids.map(function(id){return allPkgs.find(function(x){return x.id===id;});}).filter(Boolean);
+  var allItems=[...new Set(pkgs.flatMap(function(p){return p.items;}))].sort();
+  var categories={"检验项目":["血常规","尿常规","肝功能三项","肝功能全套","肾功能三项","肾功能全套","空腹血糖","血脂四项","血脂全套","甲状腺功能三项","甲状腺功能全套","内分泌全套"],"影像检查":["胸片DR","胸部CT","腹部CT","头颅CT","头颅MRI","心脏B超","腹部B超","甲状腺B超","颈动脉B超","低剂量胸部CT","乳腺B超","前列腺B超","子宫附件B超"],"功能检查":["心电图","动脉硬化检测","骨密度","经颅多普勒","心脏CTA","头颅MRA"],"肿瘤筛查":["肿瘤标志物5项","肿瘤标志物6项","肿瘤标志物8项","肿瘤标志物12项","肿瘤标志物全套","PET-CT","PET-CT全身扫描","PET-MRI全身","基因检测","肿瘤基因检测"],"其他":["碳14呼气试验","碳13尿素呼气试验","幽门螺旋杆菌全套","胶囊胃镜","经络检测","中医体质辨识"]};
+  var catNames=Object.keys(categories);
+  var html='<div class="overflow-x-auto"><table class="w-full text-sm">';
+  html+='<thead><tr class="bg-slate-50 border-b border-slate-200">';
+  html+='<th class="text-left p-4 font-semibold text-slate-700 sticky left-0 bg-slate-50 w-40">对比项目<\/th>';
+  pkgs.forEach(function(p){html+='<th class="text-center p-4 font-semibold text-slate-800 min-w-48"><div>'+p.name+'<\/div><div class="text-xs font-normal text-slate-500">'+p.hospitalName+'<\/div><div class="text-teal-600 font-bold mt-1">¥'+p.price+'<\/div><\/th>';});
+  html+='<\/tr><\/thead><tbody>';
+  html+='<tr class="border-b"><td class="p-4 font-medium text-slate-700 sticky left-0 bg-white">套餐价格<\/td>';
+  pkgs.forEach(function(p){html+='<td class="p-4 text-center"><span class="text-teal-600 font-bold text-lg">¥'+p.price+'<\/span><br><span class="text-xs text-slate-400 line-through">¥'+p.originalPrice+'<\/span><\/td>';});
+  html+='<\/tr>';
+  html+='<tr class="border-b bg-slate-50"><td class="p-4 font-medium text-slate-700 sticky left-0 bg-slate-50">适合人群<\/td>';
+  pkgs.forEach(function(p){html+='<td class="p-4 text-center text-slate-600">'+p.suitable+'<\/td>';});html+='<\/tr>';
+  html+='<tr class="border-b bg-slate-50"><td class="p-4 font-medium text-slate-700 sticky left-0 bg-slate-50">出报告时间<\/td>';
+  pkgs.forEach(function(p){html+='<td class="p-4 text-center text-slate-600">'+p.period+'<\/td>';});html+='<\/tr>';
+  html+='<tr class="border-b bg-slate-50"><td class="p-4 font-medium text-slate-700 sticky left-0 bg-slate-50">项目总数<\/td>';
+  pkgs.forEach(function(p){html+='<td class="p-4 text-center font-medium text-slate-800">'+p.items.length+' 项<\/td>';});html+='<\/tr>';
+  catNames.forEach(function(cat){
+    var catItems=categories[cat].filter(function(i){return allItems.indexOf(i)>-1;});
+    if(catItems.length===0)return;
+    html+='<tr class="bg-slate-100 border-t border-slate-200"><td colspan="'+(pkgs.length+1)+'" class="px-4 py-2 font-semibold text-slate-700 text-xs uppercase tracking-wide">'+cat+'<\/td><\/tr>';
+    catItems.forEach(function(item){
+      var counts=pkgs.map(function(p){return p.items.indexOf(item)>-1;});
+      var yesCount=counts.filter(Boolean).length;
+      var diff=yesCount>0&&yesCount<pkgs.length;
+      html+='<tr class="border-b '+(diff?"compare-diff":"")+'">';
+      html+='<td class="p-3 pl-6 text-slate-600 sticky left-0 bg-white text-sm">'+item+'<\/td>';
+      counts.forEach(function(has){html+=has?'<td class="p-3 text-center"><span class="text-green-600">✓<\/span><\/td>':'<td class="p-3 text-center"><span class="text-slate-300">—<\/span><\/td>';});
+      html+='<\/tr>';
+    });
+  });
+  html+='<\/tbody><\/table><\/div>';
+  table.innerHTML=html;
+}
+document.addEventListener("DOMContentLoaded",loadCompare);
+</script>
+</body>
+</html>
