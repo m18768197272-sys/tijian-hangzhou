@@ -112,6 +112,7 @@ function renderPkgs(filter) {
           '<span class="text-xs text-green-600 font-medium">省'+disc+'%</span>'+
           '<button onclick="addToCompare(\''+p.id+'\')" class="text-xs bg-'+typeColor+'-50 text-'+typeColor+'-700 px-3 py-1.5 rounded-lg hover:bg-'+typeColor+'-100">+ 对比</button>'+
         '</div>'+
+        '<a href="hospitals/detail-'+p.hospitalId+'.html" class="block mt-2 text-xs text-slate-400 hover:text-'+typeColor+'-600 text-center bg-slate-50 py-1.5 rounded-lg hover:bg-slate-100 transition-colors">查看该机构 →</a>'+
       '</div>'+
     '</div>';
   }).join('');

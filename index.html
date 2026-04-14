@@ -227,6 +227,17 @@
     // 民营精选3个
     const pri3 = HOSPITALS.filter(h => h.type === 'private').slice(0, 3);
     document.getElementById('priList').innerHTML = pri3.map(h => renderHospitalCard(h)).join('');
+    // 为卡片添加详情链接
+    document.getElementById('pubList').querySelectorAll('.hospital-card').forEach((card, i) => {
+      const id = pub3[i].id;
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', () => location.href = 'hospitals/detail-' + id + '.html');
+    });
+    document.getElementById('priList').querySelectorAll('.hospital-card').forEach((card, i) => {
+      const id = pri3[i].id;
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', () => location.href = 'hospitals/detail-' + id + '.html');
+    });
     // 热门套餐
     const allPkgs = HOSPITALS.flatMap(h => (h.packages || []).map(p => ({...p, hospitalName: h.name, hospitalId: h.id})));
     const topPkgs = allPkgs.sort(() => Math.random() - 0.5).slice(0, 8);
